@@ -1,0 +1,100 @@
+<!--Group 1-->
+<!-- Group Member:  Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 3.10-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exercise 3.9,3.10,3.11</title>
+        <style>
+            .typewriter{
+                font-family: "Lucida Sans Typewriter", "Lucida Console", "monospace";
+                font-size: small;
+            }
+
+            .center{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+            .size{
+                font-size: large;
+            }
+            table,td,th{
+                border:1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+                text-align: left;
+            }
+            th{
+                background-color: rgb(97, 96, 96);
+                color:white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2></h2> 
+        <p>
+            <span class="typewriter size"><strong>3.2.1 input Type color</strong></span><br>
+            The <strong><span class="typewriter">color input</span> type</strong> (Fig. 3.1; lines 20&ndash;21) enables the user to enter a color. 
+            Opera displays a <em>color picker</em> control that shows the default color (black) with a down arrow that, when clicked, shows a drop-down with 20 basic colors 
+            (Fig. 3.2). The user can select a color or click the Other... button to select from additional basic colors or create a custom color. 
+            At the time of this writing, most browsers render the <span class="typewriter">color input</span> type as a text field in which the user can enter a hexidecimal code or a color name. 
+            In the future, when you click a <span class="typewriter">color input</span>, browsers will likely display a <em>color picker</em> similar to the Microsoft Windows color
+            dialog shown in Fig. 3.2. 
+        </p>
+        <hr>
+        <figure>
+            <img class="center" src="OperaColorInput2.png" alt="OperaColorInput"/>
+                      
+        </figure>
+        <hr>
+        <figcaption><strong>Fig. 3.2&vert;</strong> A dialog for choosing colors.</figcaption>
+
+        <section id="1">    
+            
+            <p>
+                <span class="typewriter"><strong>autofocus</strong></span><strong> <em>Attribute</em><br></strong>
+                The <strong>autofocus attribute</strong> (Fig. 3.1; line 20)&mdash;an optional attribute that can be used in only one <span class="typewriter">input</span> element on a form&mdash;
+                automatically gives the focus to the input element, allowing the user to begin typing in that element immediat. 
+                Figure 3.3 shows <span class="typewriter">autofocus</span> on the <span class="typewriter">color</span> element&mdash;the first <span class="typewriter">input</span> element in our form&mdash;as rendered in Chrome. 
+                You do not need to include <span class="typewriter">autofocus</span> in your forms. 
+            </p>
+            
+            <hr>
+            <figure>
+                <img class="center" src="autofocus.png" alt="autofocus"/>
+                
+            </figure>
+            <hr>
+            <figcaption><strong>Fig. 3.3 &vert;</strong> Autofocus in the color input element using Chrome.</figcaption>
+        </section>    
+        
+        <section id="2">
+            
+            <p>
+                <strong><em>Validation</em></strong><br>
+                Traditionally it's been difficult to validate user input, such as ensuring that an e-mail address, URL, date or time is entered in the proper format. 
+                The new HTML 5 <span class="typewriter">input</span> types are <em>self validating</em> on the client side, eliminating the need to add complicated JavaScript code to your web pages to validate
+                user input, reducing the amount of invalid data submitted and consequently reducing Internet traffic between the server and the client to correct invalid input. <em>The server should still validate all user input.</em><br>
+                &emsp; 
+                When a user enters data into a form then submits the form (in this example, by clicking the <strong><span class="typewriter">Submit</span> </strong>button), the browser immediately checks the self-validating 
+                elements to ensure that the data is correct. For example, if a user enters an incorrect hexadecimal color value when using a browser that renders the color 
+                elements as a text field (e.g., Chrome), a callout pointing to the element will appear, indicating that an invalid value was entered (Fig. 3.4). 
+                Figure 3.5 lists each of the new HTML5 input types and provides examples of the proper formats required for each type of data to be valid. 
+            </p>
+            <hr>
+            <figure>
+                <img class="center" src="selfvalidationChrome.png" alt="selfvalidation"/>     
+            </figure>
+            <hr>
+            <figcaption><strong>Fig. 3.4 &vert;</strong> Validating a color input in Chrome.</figcaption>
+        </section>
+        <p>If you want to bypass validation, you can add the <strong><span class="typewriter">formnovalidate</span></strong> <strong>attribute</strong> to input
+            type submit in line 101:</p>
+         <p style="text-align: center; background-color: rgb(182, 190, 197);"><code>&lt;input type = "submit" value = "Submit" formnovalidate /&gt</code></p>      
+    </body>
+</html>

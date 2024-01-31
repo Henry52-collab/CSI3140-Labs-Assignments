@@ -1,0 +1,51 @@
+<!-- Group Member:  Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Group 1-->
+<!DOCTYPE html>
+<html>
+<title>Lab01</title>
+<body>
+    <h1>3.6 Registration</h1>
+    <form>
+        <label for="email">First name:</label>
+        <input type="text" id="fname" name="fname" required><br>
+        <label for="email">Last name:</label>
+        <input type="text" id="lname" name="lname" required><br>
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <details>
+            <label for="yearInCollege">Enter your year in college:</label>
+            <select id="year" name="year">
+                <option value="Freshman">Freshman</option>
+                <option value="Sophomore">Sophomore</option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
+            </select>
+        </details>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h1>3.7 Autocomplete Form</h1>
+    <form>
+        <input type="search" id="search" name="search">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h1>3.8 Autocomplete Form with a datalist</h1>
+    <form>
+        <label for="dayInput">Select a day:</label>
+        <input type="text" id="dayInput" list="daysList" autocomplete="off">
+        <datalist id="daysList">
+            <option value="Monday">
+            <option value="Tuesday">
+            <option value="Wednesday">
+            <option value="Thursday">
+            <option value="Friday">
+            <option value="Saturday">
+            <option value="Sunday">
+        </datalist>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
