@@ -1,0 +1,32 @@
+/* Group 1
+Group Member:   Shun Hei, Yiu   300247812
+                Rui Heng, Tan   300102229
+Exercise 4.9 */
+body, h1, p, a {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    background-color: #ccc;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+    color: #fff;
+    border-color: #fff;
+}
+
+button a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button:hover a {
+    color: #fff;
+}
