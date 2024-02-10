@@ -1,0 +1,37 @@
+8.4 Find the error in each of the following segments of code. [Note: There may be more than
+one error.]
+
+a) 	
+For(x = 100, x >= 1, ++x)
+    document.writeln(x);
+
+The f in For is uppercase should be lowercase, and the separator should be ; not ,  
+
+b) The following code should print whether integer value is odd or even:
+switch (value % 2) {
+    case 0:
+        document.writeln("Even integer");
+    case 1:
+        document.writeln("Odd integer");
+}
+
+Missing break statements after each case. Without break, the code will fall through to the next case.
+The corrected code should include break; after each case.
+
+c) The following code should output the odd integers from 19 to 1:
+for (x = 19; x >= 1; x += 2)
+    document.writeln(x);
+
+The loop end, since x is never gonna be less than 1, since the update is a increment, 
+Change the increment to a decrement. x -= 2
+
+
+d) The following code should output the even integers from 2 to 100:
+counter = 2;
+do {
+    document.writeln(counter);
+    counter += 2;
+} While(counter < 100);
+
+The W in While should be lowercase.
+
