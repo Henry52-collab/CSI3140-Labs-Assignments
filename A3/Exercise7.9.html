@@ -1,0 +1,40 @@
+<!--Exercise 7.9-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exercise 7.9</title>
+        <script type="text/javascript">
+            //a
+            var age; //age variable was not defined
+            age = parseInt(window.prompt("Enter your age:", age));
+            if(age >= 65) //; after if(age >= 65)
+                document.writeln("Age greater than or equal to 65");
+            else
+                document.writeln("Age is less than 65");
+            //b
+            var x = 1, total = 0; //total was not initialized
+            while(x <= 10){
+                total += x
+                ++x;
+            }
+            document.writeln(total);
+            //c
+            var x = 1;
+            var total = 0;
+            while(x <= 100){ //The W in while shouldn't be capatalized
+                total += x;
+                ++x;
+            }
+            document.writeln("<h1>");
+            document.writeln(total);
+            document.writeln("</h1>")
+            //d
+            var y = 5;
+            while(y > 0){
+                document.writeln(y);
+                --y; //++y will lead to an infinite while loop
+            }// missing second bracket
+        </script>
+    </head><body></body>
+</html>
