@@ -1,0 +1,56 @@
+<!--Exercise 8.11-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exercise 8.11</title>
+        <script type="text/javascript">
+            const product1 = {
+                name:1,
+                price:2.98
+            };
+            const product2 = {
+                name:2,
+                price:4.5
+            };
+            const product3 = {
+                name:3,
+                price:9.98
+            };
+            const product4={
+                name:4,
+                price:4.49
+            };
+            const product5={
+                name:5,
+                price:6.87
+            };
+
+            var product;
+            var total = 0;
+            var num ;
+            var day = 1;
+            while(day <= 7){
+                product = parseInt(window.prompt("Enter product number"));
+                num = parseInt(window.prompt("Enter product quantity"));
+                switch(product){
+                    case 1:
+                        total += (num * product1.price);
+                    case 2:
+                        total += (num & product2.price);
+                    case 3:
+                        total += (num * product3.price);
+                    case 4:
+                        total += (num * product4.price);
+                    case 5:
+                        total += (num * product5.price);
+                }
+                day++;
+            }
+            
+            document.writeln("<h1>The total retail value of last week is ");
+            document.writeln("$" + total);
+            document.writeln("</h1>")
+        </script><body></body>
+    </head>
+</html>
