@@ -1,3 +1,8 @@
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 8.4-->
+
 8.4 Find the error in each of the following segments of code. [Note: There may be more than
 one error.]
 
