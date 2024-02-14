@@ -1,0 +1,51 @@
+
+<!--Exercise 9.21-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exercise 9.21</title>
+        <link rel="stylesheet" type="text/css" href="styleSheet.css">
+        <script>
+            var heads = 0;
+            var tails = 0;
+            
+            function start(){
+                var button = document.getElementById("tossButton");
+                button.addEventListener("click",flip,false);
+            }
+
+            //flip the coin
+            function flip(){
+                var res = Math.random();
+                var para = document.getElementById("result");
+                if(res < 0.5){
+                    para.innerHTML = "true";
+                    heads++;
+                }
+                else{
+                    para.innerHTML = "false";
+                    tails++;
+                }
+                updateTable();
+            }
+
+            //Update the table that displays the number of heads and tails
+            function updateTable(){
+                var table=document.getElementById("table");
+                table.innerHTML = "<table>" + "<thead><th>Heads</th><th>Tails</th>" +
+                                  "<tbody><tr><td>" + heads + "</td> <td>"+ tails + 
+                                  "</td></tr></tbody></table>";
+            }
+
+            window.addEventListener("load",start,false);
+        </script>
+    </head>
+    <body>
+       <form action="#">
+            <input id="tossButton" type="button" value="Toss">
+       </form> 
+       <p id="result"></p>
+       <div id="table"></div>
+    </body>
+</html>
