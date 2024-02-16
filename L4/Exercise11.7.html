@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">  
+        <link rel = "styleSheet" type = "text/css" href = "style.css">
+    </head>
+    <body>
+        <textarea id = "story" name = "form" rols = "20" cols = "20">
+           
+        </textarea>
+
+        <script type = "text/javascript">
+            const article = ["the","a","one","some","any"];
+            const noun = ["boy", "girl", "dog", "town","car"];
+            const verb = ["drove", "jumped", "ran", "walked","skipped"];
+            const preposition = ["to", "from", "over", "under","on"];
+            
+            var text = document.getElementById("story");
+            text.innerHTML += "Once upon a time..." + "\n";
+            for(var x = 0; x < 20; x++){
+                var r1 = Math.floor(Math.random() * 5);
+                var r2 = Math.floor(Math.random() * 5);
+                var r3 = Math.floor(Math.random() * 5);
+                var r4 = Math.floor(Math.random() * 5);
+                var r5 = Math.floor(Math.random() * 5);
+                var r6 = Math.floor(Math.random() * 5);
+                
+                var result = article[r1].concat(" ",noun[r2]);
+                result = result.concat(" ",verb[r3]);
+                result = result.concat(" ",preposition[r4]);
+                result = result.concat(" ",article[r5]);
+                result = result.concat(" ",noun[r6]);
+                result = result.concat(".");
+                result = result.concat("\n");
+                result = result.replace(result.charAt(0),result.charAt(0).toUpperCase());
+                text.innerHTML += result;
+            }
+            text.innerHTML += "THE END"
+        </script>
+    </body>
+</html>
