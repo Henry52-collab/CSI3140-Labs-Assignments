@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alphabet Occurrence Counter</title>
+    <script>
+        function countAlphabetOccurrences() {
+            // Get value from the textarea
+            const text = document.getElementById('text').value;
+
+            // Function to count occurrences of each letter in the alphabet
+            function alphabetOccurrencesCount(text) {
+                const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+                const occurrences = Array(26).fill(0);
+
+                for (let char of text) {
+                    const index = alphabet.indexOf(char.toLowerCase());
+                    if (index !== -1) {
+                        occurrences[index]++;
+                    }
+                }
+
+                return occurrences;
+            }
+
+            // Call the function to count occurrences
+            const alphabetOccurrences = alphabetOccurrencesCount(text);
+
+            // Display the result in tabular format
+            const resultTextArea = document.getElementById('result');
+            resultTextArea.value = 'Letter\tOccurrences\n';
+
+            const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+            for (let i = 0; i < alphabet.length; i++) {
+                resultTextArea.value += `${alphabet[i]}\t${alphabetOccurrences[i]}\n`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Alphabet Occurrence Counter</h2>
+    <form>
+        <label for="text">Enter several lines of text:</label>
+        <textarea id="text" rows="4" cols="50"></textarea><br>
+
+        <button type="button" onclick="countAlphabetOccurrences()">Count Alphabet Occurrences</button>
+    </form>
+
+    <textarea id="result" rows="10" cols="50" readonly></textarea>
+</body>
+</html>
