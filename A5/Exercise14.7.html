@@ -1,0 +1,30 @@
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 14.7-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exercise 14.7</title>
+    </head>
+
+    <body>
+        <canvas id="canvas" width="500" height="500" style="border: 2px solid black"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var gradient = context.createLinearGradient(0,0,500,500);
+            gradient.addColorStop(0,"red");
+            gradient.addColorStop(0.15,"orange");
+            gradient.addColorStop(0.3,"yellow");
+            gradient.addColorStop(0.45,"green");
+            gradient.addColorStop(0.6,"blue");
+            gradient.addColorStop(0.75,"indigo");
+            gradient.addColorStop(1,"violet");
+            context.fillStyle = gradient;
+            context.fillRect(0,0,500,500);
+        </script>
+    </body>
+</html>
