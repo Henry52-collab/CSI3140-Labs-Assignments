@@ -1,0 +1,132 @@
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 14.17-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercise14.17</title>
+        <style>
+            body{
+                margin: 10;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            canvas{
+                margin-top: 10px;
+                cursor: crosshair;
+            }
+
+            #colorSwatch{
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="paintCanvas" width="800" height="600" style="border:1px solid black"></canvas>
+        <label for="sliderRed">Red</label>
+        <input type="range" id="sliderRed" min="0" max="255" value="0">
+        <label for="sliderGreen">Green</label>
+        <input type="range" id="sliderGreen" min="0" max="255" value="0">
+        <label for="sliderBlue">Blue</label>
+        <input type="range" id="sliderBlue" min="0" max="255" value="0">
+        <div id="colorSwatch" style="width: 100px; height: 100px; border: 1px solid black;"></div>
+        <label for="lineWidth">Line Width</label>
+        <input type="range" id="lineWidth" min="1" max="20" value="1"> 
+        <button id="erasor">Erasor</button>
+        <button id="clear">Clear</button>
+        <button id="save">Save</button>
+
+        <script>
+            document.addEventListener("DOMContentLoaded",(event) => {
+                const canvas = document.getElementById("paintCanvas");
+                const context = canvas.getContext("2d");
+                const colorSwatch = document.getElementById("colorSwatch");
+                const sliderRed = document.getElementById("sliderRed");
+                const sliderBlue = document.getElementById("sliderBlue");
+                const sliderGreen = document.getElementById("sliderGreen");
+                const lineWidth = document.getElementById("lineWidth");
+                const erasor = document.getElementById("erasor");
+                const clear = document.getElementById("clear");
+                const save = document.getElementById("save");
+
+                var drawing = false;
+                var color = `rgb(${sliderRed.value},${sliderGreen.value},${sliderBlue.value})`;
+                var width = lineWidth.value;
+                var erase = false;
+                
+                function updateColorSwatch(){
+                    color = `rgb(${sliderRed.value},${sliderGreen.value},${sliderBlue.value})`;
+                    colorSwatch.style.backgroundColor = color;
+                    if(!erase) context.strokeStyle = color;
+                }
+
+                function startDrawing(e){
+                    drawing = true;
+                    context.beginPath();
+                    context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                }
+
+                function draw(e){
+                    if(drawing){
+                        context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                        context.lineWidth = width;
+                        context.lineCap = "round";
+                        context.stroke();
+                    }
+                }
+
+                function stop(){
+                    drawing = false;
+                }
+
+                function clearCanvas(){
+                    context.clearRect(0,0,canvas.width,canvas.height);
+                }
+
+                function toggleErasor(){
+                    erase = !erase;
+                    if(erase)context.strokeStyle = "white";
+                    else context.strokeStyle = color;
+                }
+
+                function saveDrawing(){
+                    const URL = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = 'painting.png';
+                    link.href = URL;
+                    link.click();
+                }
+
+                //event listener for canvas
+                canvas.addEventListener("mousedown",startDrawing,false);
+                canvas.addEventListener("mousemove",draw,false);
+                canvas.addEventListener("mouseup",stop,false);
+                canvas.addEventListener("mouseleave", stop,false);
+
+                //event listener for tools
+                erasor.addEventListener("click",toggleErasor);
+                clear.addEventListener("click",clearCanvas);
+                save.addEventListener("click",saveDrawing);
+
+                //event listeners for sliders
+                sliderBlue.addEventListener("input", updateColorSwatch);
+                sliderGreen.addEventListener("input",updateColorSwatch);
+                sliderRed.addEventListener("input",updateColorSwatch);
+
+                //event listener for line width slider
+                lineWidth.addEventListener('input',function(){
+                    width = this.value;
+                });
+
+                //intialize color swatch
+                updateColorSwatch();
+            })
+        </script>
+    </body>
+</html>
