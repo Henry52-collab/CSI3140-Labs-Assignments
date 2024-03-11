@@ -2,6 +2,14 @@ var dragImage = document.getElementById("dragImage");
 var container = document.getElementById("container");
 var offsetX, offsetY,flag = false;
 
+//Event handler for absolute position
+function mouseOwn(e){
+    flag = true;
+    dragImage.style.position = "absolute";
+    offsetX = e.clientX - dragImage.getBoundingClientRect().left;
+    offsetY = e.clientY - dragImage.getBoundingClientRect().top;
+    e.preventDefault();
+}
 //Event handler for start of dragging
 function startDragging(e){
     flag = true;
@@ -29,7 +37,9 @@ function mouseLeave(e){
     flag = false;
 }
 
+document.addEventListener("mouseup",stopDragging);
 dragImage.addEventListener("mousedown",startDragging,false);
 container.addEventListener("mousemove",drag,false);
-container.addEventListener("mouseup",stopDragging,false);
+dragImage.addEventListener("mouseup",stopDragging,false);
 container.addEventListener("mouseleave",mouseLeave,false);
+dragImage.addEventListener("mousedown",mouseOwn);
