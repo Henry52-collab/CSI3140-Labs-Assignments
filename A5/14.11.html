@@ -1,0 +1,21 @@
+<html>
+
+<body>
+    <canvas id="canvas" width="1000" height="1000">
+        Your browser does not support the "canvas" element
+    </canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+
+        for (i = 0; i <= 8; i++) {
+            ctx.fillStyle = i%2 == 0?"blue":"red";
+            ctx.beginPath();
+            ctx.arc(50, 50, 50-5*i, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
+    </script>
+</body>
+
+</html>
