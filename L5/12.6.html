@@ -1,0 +1,36 @@
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 12.6-->
+<!DOCTYPE html>
+<html>
+<body>
+    <label for="colorInput">Type Background Color:</label>
+    <input type="text" id="colorInput">
+    <br>
+    <input type="radio" id="serif" name="font" value="serif" onclick="changeFont('serif')">
+    <label for="serif">serif</label><br>
+    <input type="radio" id="sanserif" name="font" value="sanserif" onclick="changeFont('sans-serif')">
+    <label for="html">San serif</label><br>
+
+
+
+</body>
+
+<script>
+    const colorInput = document.getElementById("colorInput");
+    const body = document.body;
+    colorInput.addEventListener("input", updateColor)
+    
+    
+    function updateColor(e){
+        body.style.backgroundColor = e.target.value;
+    }
+
+    function changeFont(e){
+        body.style.fontFamily = e;
+    }
+
+</script>
+
+</html>
