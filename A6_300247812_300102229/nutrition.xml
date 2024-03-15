@@ -1,0 +1,19 @@
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 15.7-->
+
+<Cookies>
+    <productName>Grandma White's cookies</productName>
+    <amount>1 package</amount>
+    <calories>260</calories>
+    <fatCalories>100</fatCalories>
+    <fat>11 grams</fat>
+    <saturatedFat>2 grams</saturatedFat>
+    <cholesterol>5 milligram</cholesterol>
+    <sodium>210 milligram</sodium>
+    <carbohydrate>36 gram</carbohydrate>
+    <fiber>2 grams</fiber>
+    <suger>15 grams</suger>
+    <protein>5 gram</protein>
+</Cookies>
