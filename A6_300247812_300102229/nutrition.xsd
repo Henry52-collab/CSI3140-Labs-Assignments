@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+
+<!--Exercise 15.8-->
+
+<schema xmlns= "http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.w3.org/2001/XMLSchema">
+    <element name="Cookies" type="CookieType"/>
+    <complexType name="CookieType">
+        <all>
+            <element name="productName" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="amount" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="calories" type="int" minOccurs="1" maxOccurs="1"/>
+            <element name="fatCalories" type="int" minOccurs="1" maxOccurs="1"/>
+            <element name="fat" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="saturatedFat" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="cholesterol" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="sodium" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="carbohydrate" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="fiber" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="suger" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="protein" type="string" minOccurs="1" maxOccurs="1"/>
+        </all>
+    </complexType>
+</schema>
