@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="C:\Users\percy\Study@UO\CSI\CSI_3140\LAB\L6_300247812_300102229\15.9.xsl"?>
+<?xml-stylesheet type="text/xsl" href="nutrition.xsl"?>
 
 <!--Group 1-->
 <!--Group Member:   Shun Hei, Yiu   300247812
                     Rui Heng, Tan   300102229-->
-<!--Exercise 15.7-->
+<!--Exercise 15.9-->
 
 <Cookies>
-    <productName>Grandma White's cookies</productName>
-    <amount>1 package</amount>
+    <information>
+        <productName>Grandma White's cookies</productName>
+        <amount>1 package</amount>
+    </information>
     <calories>260</calories>
     <fatCalories>100</fatCalories>
     <fat>11 grams</fat>
