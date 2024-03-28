@@ -1,0 +1,216 @@
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 7.16-->
+
+<!DOCTYPE html>
+
+<!-- Fig. 2.15: form2.html -->
+<!-- Form using a variety of components. -->
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>More Forms</title>
+   <script type="text/javascript">
+      function validateEmail(email) {
+         //field for showing error messages
+         var errorDiv = document.getElementById("FormatError");
+         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;//regular expression for email
+         if (!emailRegex.test(email.value)) {
+            errorDiv.textContent = "Please enter a valid email address.";
+            errorDiv.style.display = "block";
+            return false;
+         } else {
+            errorDiv.textContent = '';
+            errorDiv.style.display = 'none';
+            checkEmailAgainstList(email);
+            return true;
+         }
+      }
+
+      //validate if a field is empty
+      function validateField(ref) {
+         document.getElementById(ref.name + "RequiredError").innerHTML = "";
+         if (ref.value.length == 0) {
+            document.getElementById(ref.name + "RequiredError").innerHTML = "<font color=\"red\">Field is required</font>";
+            return false;
+         }
+         if ((ref.name == "comments") && (ref.value == "Enter comments here.")) {
+            document.getElementById(ref.name + "RequiredError").innerHTML = "<font color=\"red\">Field is required</font>";
+            return false;
+         }
+         return true;
+      }
+
+      //validate all the inputs
+      function validateAll() {
+         var passed = validateField(document.getElementById("name"));
+         if (passed) {
+            passed = validateField(document.getElementById("email"));
+            if (passed) {
+               passed = validateEmail();
+            } else {
+               validateEmail();
+            }
+         } else {
+            validateField(document.getElementById("email"));
+         }
+         if (passed) {
+            passed = validateField(document.getElementById("comments"));
+         } else {
+            validateField(document.getElementById("comments"));
+         }
+         if (passed) {
+            ajaxFile.readFile();
+         }
+         return passed;
+      }
+
+      function checkEmailAgainstList(email) {
+         var errorDiv = document.getElementById('ListError');
+         errorDiv.textContent = '';
+         var request = new XMLHttpRequest();
+         request.onload = function () {
+            if (this.status == 200 && this.responseXML) {
+               var emails = this.responseXML.getElementsByTagName('email');
+               var emailArray = Array.from(emails).map(function (node) {
+                  return node.textContent.trim().toLowerCase();
+               });
+               if (emailArray.includes(email.value.trim().toLowerCase())) {
+                  errorDiv.textContent = 'This email address is not allowed to post feedback.';
+                  errorDiv.style.display = 'block';
+               } else {
+                  errorDiv.textContent = '';
+                  errorDiv.style.display = 'none';
+               }
+            } else {
+               errorDiv.textContent = 'Error checking email against list.';
+               errorDiv.style.display = 'block';
+            }
+         };
+         request.onerror = function () {
+            errorDiv.textContent = 'Error connecting to the server.';
+            errorDiv.style.display = 'block';
+         };
+         request.open('GET', 'invalidEmails.xml', true);
+         request.send();
+      }
+
+   </script>
+</head>
+
+<body>
+   <h1>Feedback Form</h1>
+   <p>Please fill out this form to help
+      us improve our site.</p>
+
+   <form method="post" action="http://www.deitel.com" onsubmit="validateAll()">
+
+      <input type="hidden" name="recipient" value="deitel@deitel.com">
+      <input type="hidden" name="subject" value="Feedback Form">
+      <input type="hidden" name="redirect" value="main.html">
+
+      <p><label>Name:
+            <input name="name" id="name" onblur="validateField(this)" type="text" size="25">&nbsp;<label
+               id="nameRequiredError"></label>
+         </label></p>
+
+      <!-- <textarea> creates a multiline textbox -->
+      <p><label>Comments:<br>
+            <textarea name="comments" id="comments" placeholder="Enter comments" onblur="validateField(this)" rows="4"
+               cols="36"></textarea>&nbsp;<label id="commentsRequiredError"></label>
+         </label></p>
+
+      <!-- <input type = "password"> inserts a -->
+      <!-- textbox whose display is masked with -->
+      <!-- asterisk characters -->
+      <p><label>E-mail Address:
+            <input name="email" id="email" type="email" size="25" placeholder="Enter a registed email"
+               onblur="validateEmail(this);">&nbsp;<label id="emailRequiredError"></label>
+            <span id="ListError"></span>
+            <span id="FormatError"></span>
+         </label></p>
+
+      <p>
+         <strong>Things you liked:</strong><br>
+
+         <label>Site design
+            <input name="thingsliked" type="checkbox" value="Design"></label>
+         <label>Links
+            <input name="thingsliked" type="checkbox" value="Links"></label>
+         <label>Ease of use
+            <input name="thingsliked" type="checkbox" value="Ease"></label>
+         <label>Images
+            <input name="thingsliked" type="checkbox" value="Images"></label>
+         <label>Source code
+            <input name="thingsliked" type="checkbox" value="Code"></label>
+      </p>
+
+      <!-- <input type = "radio"> creates a radio -->
+      <!-- button. The difference between radio buttons -->
+      <!-- and checkboxes is that only one radio button -->
+      <!-- in a group can be selected. -->
+      <p>
+         <strong>How did you get to our site?:</strong><br>
+
+         <label>Search engine
+            <input name="howtosite" type="radio" value="search engine" checked></label>
+         <label>Links from another site
+            <input name="howtosite" type="radio" value="link"></label>
+         <label>Deitel.com Web site
+            <input name="howtosite" type="radio" value="deitel.com"></label>
+         <label>Reference in a book
+            <input name="howtosite" type="radio" value="book"></label>
+         <label>Other
+            <input name="howtosite" type="radio" value="other"></label>
+      </p>
+
+      <p>
+         <label>Rate our site:
+
+            <!-- the <select> tag presents a drop-down -->
+            <!-- list with choices indicated by the -->
+            <!-- <option> tags -->
+            <select name="rating">
+               <option selected>Amazing</option>
+               <option>10</option>
+               <option>9</option>
+               <option>8</option>
+               <option>7</option>
+               <option>6</option>
+               <option>5</option>
+               <option>4</option>
+               <option>3</option>
+               <option>2</option>
+               <option>1</option>
+               <option>Awful</option>
+            </select>
+         </label>
+      </p>
+
+      <p>
+         <input type="submit" onclick="validateAll();return false;" value="Submit">
+         <input type="reset" value="Clear">
+      </p>
+   </form>
+</body>
+
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->
