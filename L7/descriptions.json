@@ -1,0 +1,22 @@
+[
+    {
+        "id": "0000",
+        "description": "$100 laptop, very good, *****"
+    },
+    {
+        "id": "0001",
+        "description": "$100 Smartphone, versatile device for communication and multimedia, sleek design"
+    },
+    {
+        "id": "0002",
+        "description": "$100 Headphones, audio devices for immersive sound experience, comfortable to wear"
+    },
+    {
+        "id": "0003",
+        "description": "$100 Smartwatch, wearable technology for notifications, fitness tracking, and more, stylish design"
+    },
+    {
+        "id": "0004",
+        "description": "$100 Television, entertainment device for watching movies, shows, and playing games, high-resolution display"
+    }
+]

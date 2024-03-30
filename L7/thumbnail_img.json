@@ -1,0 +1,22 @@
+[
+    {
+        "id": "0000",
+        "thumbnail_filename": "thumbnail/laptop.jpg"
+    },
+    {
+        "id": "0001",
+        "thumbnail_filename": "thumbnail/smartphone.jpg"
+    },
+    {
+        "id": "0002",
+        "thumbnail_filename": "thumbnail/headphones.jpg"
+    },
+    {
+        "id": "0003",
+        "thumbnail_filename": "thumbnail/smartwatch.jpg"
+    },
+    {
+        "id": "0004",
+        "thumbnail_filename": "thumbnail/television.jpg"
+    }
+]

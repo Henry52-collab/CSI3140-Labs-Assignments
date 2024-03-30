@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--Group 1-->
+<!--Group Member:   Shun Hei, Yiu   300247812
+                    Rui Heng, Tan   300102229-->
+<!--Exercise 16.8-->
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <style type="text/css">
+      .box {
+         border: 1px solid black;
+         padding: 10px
+      }
+
+      .thumbnail {
+         height: 200px;
+         width: 200px;
+      }
+
+   </style>
+   <title>Switch Content Asynchronously</title>
+   <script>
+      // set up event handlers
+      let asyncRequest;
+      function registerListeners() {
+         request('summary.json', (err, data) => {
+            var img;
+            img = document.getElementById("0000");
+            img.setAttribute("src", data[0].thumbnail_filename)
+            img.addEventListener("mouseover", function () {
+               getContent("fullSize_img.json", 0);
+            }, false);
+            img.addEventListener("mouseout", clearContent, false);
+
+            img = document.getElementById("0001");
+            img.setAttribute("src", data[1].thumbnail_filename)
+            img.addEventListener("mouseover", function () {
+               getContent("fullSize_img.json", 1);
+            }, false);
+            img.addEventListener("mouseout", clearContent, false);
+
+            img = document.getElementById("0002");
+            img.setAttribute("src", data[2].thumbnail_filename)
+            img.addEventListener("mouseover", function () {
+               getContent("fullSize_img.json", 2);
+            }, false);
+            img.addEventListener("mouseout", clearContent, false);
+
+            img = document.getElementById("0003");
+            img.setAttribute("src", data[3].thumbnail_filename)
+            img.addEventListener("mouseover", function () {
+               getContent("fullSize_img.json", 3);
+            }, false);
+            img.addEventListener("mouseout", clearContent, false);
+
+            img = document.getElementById("0004");
+            img.setAttribute("src", data[4].thumbnail_filename)
+            img.addEventListener("mouseover", function () {
+               getContent("fullSize_img.json", 4);
+            }, false);
+            img.addEventListener("mouseout", clearContent, false);
+
+
+         });
+
+         request("descriptions.json", (err,data)=> {
+            document.getElementById("00000").innerText = JSON.stringify(data[0].description)
+            document.getElementById("00001").innerText = JSON.stringify(data[1].description)
+            document.getElementById("00002").innerText = JSON.stringify(data[2].description)
+            document.getElementById("00003").innerText = JSON.stringify(data[3].description)
+            document.getElementById("00004").innerText = JSON.stringify(data[4].description)
+         })
+
+      }
+
+
+
+      const request = (resource, callback) => {
+         const request = new XMLHttpRequest();
+
+         request.addEventListener('readystatechange', () => {
+            if (request.readyState === 4 && request.status === 200) {
+               const data = JSON.parse(request.responseText);
+               callback(undefined, data);
+            } else if (request.readyState === 4) {
+               callback('coud not fetch data', undefined);
+            }
+         });
+
+         request.open('GET', resource);
+         request.send();
+      }
+
+
+
+      function getContent(url, num) {
+         // attempt to create XMLHttpRequest object and make the request
+         try {
+            asyncRequest = new XMLHttpRequest();
+
+            asyncRequest.addEventListener("readystatechange", () => { stateChange(num) }, false);
+            asyncRequest.open("GET", url, true); // prepare the request
+            asyncRequest.send(null); // send the request
+         }
+         catch (exception) {
+            alert("Request failed.");
+         } // end catch
+      } // end function getContent
+
+      function stateChange(num) {
+         if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
+            document.getElementById("largeImg").setAttribute("src",(JSON.parse(asyncRequest.responseText)[num].thumbnail_filename))
+            document.getElementById("largeImg").setAttribute("width","800px")
+            document.getElementById("largeImg").setAttribute("height","800px")
+         } // end if
+      } // end function stateChange
+
+      // clear the content of the box
+      function clearContent() {
+         document.getElementById("largeImg").setAttribute("src","");
+         document.getElementById("largeImg").setAttribute("width","0px")
+         document.getElementById("largeImg").setAttribute("height","0px")
+      } // end function clearContent
+
+      window.addEventListener("load", registerListeners, false);
+   </script>
+</head>
+
+<body>
+   <table>
+      <tr>
+         <td><img id="largeImg"></td>
+      </tr>
+      <tr>
+         <td><img id="0000" class="thumbnail"><textarea id="00000"></textarea></td>
+      </tr>
+      <tr>
+         <td> <img id="0001" class="thumbnail"><textarea id="00001"></textarea>
+         </td>
+      </tr>
+
+
+      <tr>
+         <td> <img id="0002" class="thumbnail"><textarea id="00002"></textarea>
+         </td>
+      </tr>
+
+
+      <tr>
+         <td> <img id="0003" class="thumbnail"><textarea id="00003"></textarea>
+         </td>
+      </tr>
+
+
+      <tr>
+         <td> <img id="0004" class="thumbnail"><textarea id="00004"></textarea>
+         </td>
+      </tr>
+
+      <!-- <div class="box" id="contentArea"></div> -->
+   </table>
+</body>
+
+</html>
+
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->
